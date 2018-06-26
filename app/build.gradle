@@ -18,6 +18,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -25,4 +26,9 @@ dependencies {
     implementation project(':inter-ibuy')
     annotationProcessor project(':inter-compiler')
     implementation project(':inter-core')
+    //字体图标
+//    implementation 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+//    implementation 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+
+
 }

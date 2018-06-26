@@ -1,13 +1,13 @@
 package com.rid.morgan.inter.app;
 
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 /**
  * Create by Morgan on 2018/6/26 0026
  */
 public class Configurator {
 
-    public static final WeakHashMap<String,Object> INTER_CONFIGS = new WeakHashMap<>();
+    public static final HashMap<String,Object> INTER_CONFIGS = new HashMap<>();
 
     private Configurator(){
         INTER_CONFIGS.put(ConfigType.CONFIG_READY.name(),false);//配置开始,还没有完成
@@ -21,7 +21,7 @@ public class Configurator {
         private static final Configurator INSTANCE = new Configurator();
     }
 
-    final WeakHashMap<String,Object> getInterConfigs(){
+    final HashMap<String,Object> getInterConfigs(){
         return INTER_CONFIGS;
     }
 

@@ -1,8 +1,9 @@
 package com.rid.morgan.inter.app;
 
+import android.app.Application;
 import android.content.Context;
 
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 /**
  * Create by Morgan on 2018/6/26 0026
@@ -15,8 +16,12 @@ public class Inter {
     }
 
 
-    private static WeakHashMap<String,Object> getConfigurations(){
+    private static HashMap<String,Object> getConfigurations(){
         return Configurator.getInstance().getInterConfigs();
+    }
+
+    public static Context getApplicationContext(){
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
     }
 
 }
