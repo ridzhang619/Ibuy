@@ -24,4 +24,5 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation project(':inter-ibuy')
     annotationProcessor project(':inter-compiler')
+    implementation project(':inter-core')
 }
