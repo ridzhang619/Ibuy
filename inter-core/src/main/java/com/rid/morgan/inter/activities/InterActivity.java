@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.ContentFrameLayout;
+import android.util.Log;
 
 import com.rid.morgan.inter.R;
 import com.rid.morgan.inter.delegate.InterDelegate;
@@ -15,13 +16,14 @@ import me.yokeyword.fragmentation.SupportActivity;
 /**
  * Create by Morgan on 2018/6/26 0026
  */
-public abstract class ContainerActivity extends SupportActivity{
+public abstract class InterActivity extends SupportActivity{
 
     public abstract InterDelegate setRootDelegate();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+        initContainer(savedInstanceState);
     }
 
 
