@@ -7,6 +7,7 @@ import com.rid.morgan.inter.net.callback.IFailure;
 import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
 import com.rid.morgan.inter.net.callback.RequestCallbacks;
+import com.rid.morgan.inter.net.download.DownloadHandler;
 import com.rid.morgan.inter.ui.InterLoader;
 import com.rid.morgan.inter.ui.LoaderStyle;
 
@@ -26,6 +27,9 @@ public class RestClient {
 
     private final String URL;
     private final Map<String,Object> PARAMS;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final IRequest REQUEST;
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
@@ -37,6 +41,9 @@ public class RestClient {
 
     public RestClient(String url,
                       Map<String, Object> params,
+                      String downloadDir,
+                      String extension,
+                      String name,
                       IRequest request,
                       ISuccess success,
                       IFailure failure,
@@ -47,6 +54,9 @@ public class RestClient {
                       LoaderStyle loaderStyle) {
         this.URL = url;
         this.PARAMS = params;
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION =  extension;
+        this.NAME = name;
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
@@ -143,6 +153,10 @@ public class RestClient {
 
     public final void delete(){
         request(HttpMethod.DELETE);
+    }
+
+    public final void download(){
+        new DownloadHandler(URL,REQUEST,DOWNLOAD_DIR,EXTENSION,NAME,SUCCESS,FAILURE,ERROR).handleDownload();
     }
 
 
