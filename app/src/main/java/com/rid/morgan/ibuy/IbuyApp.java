@@ -13,6 +13,7 @@ public class IbuyApp extends Application{
     public void onCreate() {
         super.onCreate();
         Inter.init(this)
+                .withApiHost("https://127.0.0.1/")
                 .configure();
     }
 }
