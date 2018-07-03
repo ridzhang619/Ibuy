@@ -8,6 +8,7 @@ import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
 import com.rid.morgan.inter.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class RestClientBuilder {
     private  RequestBody mBody;
     private  Context mContext;
     private  LoaderStyle mLoaderStyle;
+    private  File mFile;
 
 
     RestClientBuilder(){//只允许同包创建此实例
@@ -52,10 +54,22 @@ public class RestClientBuilder {
         return this;
     }
 
+
+    public final RestClientBuilder file(File file){
+        this.mFile = file;
+        return this;
+    }
+
+    public final RestClientBuilder file(String filePath){
+        this.mFile = new File(filePath);
+        return this;
+    }
+
     public final RestClientBuilder raw(String raw){
         this.mBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"),raw);
         return this;
     }
+
 
     public final RestClientBuilder onRequest(IRequest request){
         this.mIRequest = request;
@@ -88,7 +102,7 @@ public class RestClientBuilder {
 
 
     public final RestClient build(){
-        return new RestClient(mUrl,mParams,mIRequest,mISuccess,mIFailure,mIError,mBody,mContext,mLoaderStyle);
+        return new RestClient(mUrl,mParams,mIRequest,mISuccess,mIFailure,mIError,mBody,mFile,mContext,mLoaderStyle);
     }
 
 
