@@ -1,10 +1,14 @@
 package com.rid.morgan.inter.net;
 
+import android.content.Context;
+
 import com.rid.morgan.inter.net.callback.IError;
 import com.rid.morgan.inter.net.callback.IFailure;
 import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
 import com.rid.morgan.inter.net.callback.RequestCallbacks;
+import com.rid.morgan.inter.ui.InterLoader;
+import com.rid.morgan.inter.ui.LoaderStyle;
 
 import java.util.Map;
 
@@ -24,6 +28,8 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final LoaderStyle LOADER_STYLE;
+    private final Context CONTEXT;
 
     public RestClient(String url,
                       Map<String, Object> params,
@@ -31,7 +37,9 @@ public class RestClient {
                       ISuccess success,
                       IFailure failure,
                       IError error,
-                      RequestBody body) {
+                      RequestBody body,
+                      Context context,
+                      LoaderStyle loaderStyle) {
         this.URL = url;
         this.PARAMS = params;
         this.REQUEST = request;
@@ -39,6 +47,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.CONTEXT = context;
+        this.LOADER_STYLE = loaderStyle;
     }
 
     public static RestClientBuilder builder(){
@@ -52,6 +62,11 @@ public class RestClient {
         if (REQUEST != null){
             REQUEST.onRequestStart();
         }
+
+        if(LOADER_STYLE != null){
+            InterLoader.showLoading(CONTEXT,LOADER_STYLE);
+        }
+
 
         switch(method){
             case GET:
@@ -78,7 +93,7 @@ public class RestClient {
     }
 
     private Callback<String> getCallback(){
-        return new RequestCallbacks(REQUEST,SUCCESS,FAILURE,ERROR);
+        return new RequestCallbacks(REQUEST,SUCCESS,FAILURE,ERROR,LOADER_STYLE);
     }
 
     public final void get(){

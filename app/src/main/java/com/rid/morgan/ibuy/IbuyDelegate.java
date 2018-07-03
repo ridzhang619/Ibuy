@@ -36,11 +36,12 @@ public class IbuyDelegate extends InterDelegate{
         RestClient.builder()
                 .url("https://www.baidu.com/")
                 .params(new HashMap<String, Object>())
+                .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
                         Log.d(TAG,""+response);
-                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 })
                 .error(new IError() {

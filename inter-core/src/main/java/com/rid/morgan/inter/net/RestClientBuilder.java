@@ -1,9 +1,12 @@
 package com.rid.morgan.inter.net;
 
+import android.content.Context;
+
 import com.rid.morgan.inter.net.callback.IError;
 import com.rid.morgan.inter.net.callback.IFailure;
 import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
+import com.rid.morgan.inter.ui.LoaderStyle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +26,8 @@ public class RestClientBuilder {
     private  IFailure mIFailure;
     private  IError mIError;
     private  RequestBody mBody;
+    private  Context mContext;
+    private  LoaderStyle mLoaderStyle;
 
 
     RestClientBuilder(){//只允许同包创建此实例
@@ -70,9 +75,20 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder loader(Context context , LoaderStyle loaderStyle){
+        this.mContext = context;
+        this.mLoaderStyle = loaderStyle;
+        return this;
+    }
+    public final RestClientBuilder loader(Context context){//重载
+        this.mContext = context;
+        this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
+        return this;
+    }
+
 
     public final RestClient build(){
-        return new RestClient(mUrl,mParams,mIRequest,mISuccess,mIFailure,mIError,mBody);
+        return new RestClient(mUrl,mParams,mIRequest,mISuccess,mIFailure,mIError,mBody,mContext,mLoaderStyle);
     }
 
 
