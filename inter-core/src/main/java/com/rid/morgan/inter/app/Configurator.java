@@ -1,13 +1,19 @@
 package com.rid.morgan.inter.app;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.Interceptor;
 
 /**
  * Create by Morgan on 2018/6/26 0026
  */
 public class Configurator {
 
-    public static final HashMap<String,Object> INTER_CONFIGS = new HashMap<>();
+    public static final HashMap<Object,Object> INTER_CONFIGS = new HashMap<>();
+    private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
+
 
     private Configurator(){
         INTER_CONFIGS.put(ConfigType.CONFIG_READY.name(),false);//配置开始,还没有完成
@@ -21,7 +27,7 @@ public class Configurator {
         private static final Configurator INSTANCE = new Configurator();
     }
 
-    final HashMap<String,Object> getInterConfigs(){
+    final HashMap<Object,Object> getInterConfigs(){
         return INTER_CONFIGS;
     }
 
@@ -34,6 +40,18 @@ public class Configurator {
         return this;
     }
 
+    public final Configurator withInterceptor(Interceptor interceptor){
+        INTERCEPTORS.add(interceptor);
+        INTER_CONFIGS.put(ConfigType.INTERCEPTOR.name(),INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors){
+        INTERCEPTORS.addAll(interceptors);
+        INTER_CONFIGS.put(ConfigType.INTERCEPTOR.name(),INTERCEPTORS);
+        return this;
+    }
+
     private void checkConfiguration(){
         final boolean isReady = (boolean) INTER_CONFIGS.get(ConfigType.CONFIG_READY.name());
         if (!isReady){
@@ -41,9 +59,9 @@ public class Configurator {
         }
     }
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key){
+    final <T> T getConfiguration(Object key){
         checkConfiguration();
-        return (T) INTER_CONFIGS.get(key.name());
+        return (T) INTER_CONFIGS.get(key);
     }
 
 }

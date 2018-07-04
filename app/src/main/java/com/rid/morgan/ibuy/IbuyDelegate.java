@@ -9,6 +9,7 @@ import com.rid.morgan.inter.delegate.InterDelegate;
 import com.rid.morgan.inter.net.RestClient;
 import com.rid.morgan.inter.net.callback.IError;
 import com.rid.morgan.inter.net.callback.IFailure;
+import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
 
 import java.util.HashMap;
@@ -37,6 +38,17 @@ public class IbuyDelegate extends InterDelegate{
                 .url("https://www.baidu.com/")
                 .params(new HashMap<String, Object>())
                 .loader(getContext())
+                .onRequest(new IRequest() {
+                    @Override
+                    public void onRequestStart() {
+
+                    }
+
+                    @Override
+                    public void onRequestEnd() {
+
+                    }
+                })
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
