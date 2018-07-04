@@ -61,6 +61,7 @@ public class RequestCallbacks implements Callback<String>{
             REQUEST.onRequestEnd();
         }
         stopLoading();
+        
     }
 
     private void stopLoading(){
