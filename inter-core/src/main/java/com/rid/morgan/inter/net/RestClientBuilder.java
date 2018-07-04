@@ -30,6 +30,9 @@ public class RestClientBuilder {
     private  Context mContext;
     private  LoaderStyle mLoaderStyle;
     private  File mFile;
+    private String mDownloadDir;
+    private String mExtension;
+    private String mName;
 
 
     RestClientBuilder(){//只允许同包创建此实例
@@ -70,6 +73,22 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder name(String name) {
+        this.mName = name;
+        return this;
+    }
+
+    public final RestClientBuilder dir(String dir) {
+        this.mDownloadDir = dir;
+        return this;
+    }
+
+    public final RestClientBuilder extension(String extension) {
+        this.mExtension = extension;
+        return this;
+    }
+
+
 
     public final RestClientBuilder onRequest(IRequest request){
         this.mIRequest = request;
@@ -102,7 +121,10 @@ public class RestClientBuilder {
 
 
     public final RestClient build(){
-        return new RestClient(mUrl,mParams,mIRequest,mISuccess,mIFailure,mIError,mBody,mFile,mContext,mLoaderStyle);
+        return new RestClient(mUrl,mParams,mDownloadDir,
+                mExtension,mName,mIRequest,mISuccess,
+                mIFailure,mIError,mBody,mFile,
+                mContext,mLoaderStyle);
     }
 
 

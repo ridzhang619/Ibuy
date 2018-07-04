@@ -73,7 +73,7 @@ public class RestClient {
     }
 
     private void request(HttpMethod method){
-        RestService service = RestCreator.getRestSevice();
+        RestService service = RestCreator.getRestService();
         Call<String> call = null;
 
         if (REQUEST != null){
@@ -108,7 +108,7 @@ public class RestClient {
             case UPLOAD:
                 RequestBody requestBody = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()),FILE);
                 MultipartBody.Part body = MultipartBody.Part.createFormData("file",FILE.getName(),requestBody);
-                call = RestCreator.getRestSevice().upload(URL,body);
+                call = RestCreator.getRestService().upload(URL,body);
                 break;
             default:
                 break;
