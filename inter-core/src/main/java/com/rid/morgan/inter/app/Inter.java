@@ -14,7 +14,7 @@ public class Inter {
         Configurator
                 .getInstance()
                 .getInterConfigs()
-                .put(ConfigType.APPLICATION_CONTEXT.name(),context.getApplicationContext());
+                .put(ConfigType.APPLICATION_CONTEXT,context.getApplicationContext());
         return Configurator.getInstance();
     }
 

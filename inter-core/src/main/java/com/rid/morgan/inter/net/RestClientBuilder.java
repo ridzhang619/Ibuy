@@ -6,7 +6,7 @@ import com.rid.morgan.inter.net.callback.IError;
 import com.rid.morgan.inter.net.callback.IFailure;
 import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
-import com.rid.morgan.inter.ui.LoaderStyle;
+import com.rid.morgan.inter.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.HashMap;

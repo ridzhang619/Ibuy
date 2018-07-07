@@ -1,4 +1,4 @@
-package com.rid.morgan.inter.util;
+package com.rid.morgan.inter.util.dimens;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;

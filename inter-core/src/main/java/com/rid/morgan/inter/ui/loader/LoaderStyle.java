@@ -1,4 +1,4 @@
-package com.rid.morgan.inter.ui;
+package com.rid.morgan.inter.ui.loader;
 
 /**
  * Create by Morgan on 2018/7/3 0003

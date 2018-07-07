@@ -1,4 +1,4 @@
-package com.rid.morgan.inter.ui;
+package com.rid.morgan.inter.ui.loader;
 
 import android.content.Context;
 

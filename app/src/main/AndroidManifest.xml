@@ -3,6 +3,7 @@
     package="com.rid.morgan.ibuy">
 
     <application
+
         android:name=".IbuyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

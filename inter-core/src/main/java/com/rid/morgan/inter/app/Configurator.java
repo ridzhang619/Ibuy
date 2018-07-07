@@ -6,17 +6,19 @@ import java.util.List;
 
 import okhttp3.Interceptor;
 
+
 /**
  * Create by Morgan on 2018/6/26 0026
  */
 public class Configurator {
+
 
     public static final HashMap<Object,Object> INTER_CONFIGS = new HashMap<>();
     private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
 
 
     private Configurator(){
-        INTER_CONFIGS.put(ConfigType.CONFIG_READY.name(),false);//配置开始,还没有完成
+        INTER_CONFIGS.put(ConfigType.CONFIG_READY,false);//配置开始,还没有完成
     }
 
     public static Configurator getInstance(){
@@ -32,28 +34,28 @@ public class Configurator {
     }
 
     public final void configure(){
-        INTER_CONFIGS.put(ConfigType.CONFIG_READY.name(),true);
+        INTER_CONFIGS.put(ConfigType.CONFIG_READY,true);
     }
 
     public final Configurator withApiHost(String host){
-        INTER_CONFIGS.put(ConfigType.API_HOST.name(),host);
+        INTER_CONFIGS.put(ConfigType.API_HOST,host);
         return this;
     }
 
     public final Configurator withInterceptor(Interceptor interceptor){
         INTERCEPTORS.add(interceptor);
-        INTER_CONFIGS.put(ConfigType.INTERCEPTOR.name(),INTERCEPTORS);
+        INTER_CONFIGS.put(ConfigType.INTERCEPTOR,INTERCEPTORS);
         return this;
     }
 
     public final Configurator withInterceptors(ArrayList<Interceptor> interceptors){
         INTERCEPTORS.addAll(interceptors);
-        INTER_CONFIGS.put(ConfigType.INTERCEPTOR.name(),INTERCEPTORS);
+        INTER_CONFIGS.put(ConfigType.INTERCEPTOR,INTERCEPTORS);
         return this;
     }
 
     private void checkConfiguration(){
-        final boolean isReady = (boolean) INTER_CONFIGS.get(ConfigType.CONFIG_READY.name());
+        final boolean isReady = (boolean) INTER_CONFIGS.get(ConfigType.CONFIG_READY);
         if (!isReady){
             throw new RuntimeException("Configuration is not ready,call configure");
         }

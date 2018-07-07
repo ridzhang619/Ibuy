@@ -2,9 +2,8 @@ package com.rid.morgan.inter.net.callback;
 
 import android.os.Handler;
 
-import com.rid.morgan.inter.app.Inter;
-import com.rid.morgan.inter.ui.InterLoader;
-import com.rid.morgan.inter.ui.LoaderStyle;
+import com.rid.morgan.inter.ui.loader.InterLoader;
+import com.rid.morgan.inter.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

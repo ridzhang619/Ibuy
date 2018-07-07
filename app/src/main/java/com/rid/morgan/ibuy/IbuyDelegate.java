@@ -31,11 +31,34 @@ public class IbuyDelegate extends InterDelegate{
     public void onBindView(Bundle savedInstanceState, View rootView) {
         Log.d(TAG,"onBindView");
         textRetrofit();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.d(TAG,"sleep");
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    @Override
+    public void onUnBindView() {
+
     }
 
     private void textRetrofit() {
         RestClient.builder()
-                .url("https://www.baidu.com/")
+//                .url("https://www.baidu.com/")
+                .url("https://127.0.0.1/index")
                 .params(new HashMap<String, Object>())
                 .loader(getContext())
                 .onRequest(new IRequest() {

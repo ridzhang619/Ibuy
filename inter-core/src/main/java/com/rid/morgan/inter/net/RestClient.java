@@ -8,8 +8,8 @@ import com.rid.morgan.inter.net.callback.IRequest;
 import com.rid.morgan.inter.net.callback.ISuccess;
 import com.rid.morgan.inter.net.callback.RequestCallbacks;
 import com.rid.morgan.inter.net.download.DownloadHandler;
-import com.rid.morgan.inter.ui.InterLoader;
-import com.rid.morgan.inter.ui.LoaderStyle;
+import com.rid.morgan.inter.ui.loader.InterLoader;
+import com.rid.morgan.inter.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

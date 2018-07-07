@@ -1,4 +1,4 @@
-package com.rid.morgan.inter.ui;
+package com.rid.morgan.inter.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.rid.morgan.inter.R;
-import com.rid.morgan.inter.util.DimenUtil;
+import com.rid.morgan.inter.util.dimens.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

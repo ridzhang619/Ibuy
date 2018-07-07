@@ -55,7 +55,7 @@ public class DownloadHandler {
             REQUEST.onRequestStart();
         }
 
-        RestCreator.getRestSevice().download(URL,PARAMS)
+        RestCreator.getRestService().download(URL,PARAMS)
                 .enqueue(new Callback<ResponseBody>() {//异步
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
