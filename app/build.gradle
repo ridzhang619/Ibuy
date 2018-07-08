@@ -26,9 +26,7 @@ dependencies {
     implementation project(':inter-ibuy')
     annotationProcessor project(':inter-compiler')
     implementation project(':inter-core')
-    //字体图标
-//    implementation 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
-//    implementation 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+
     //fragment依赖
     api 'me.yokeyword:fragmentation:1.3.5'
     api 'me.yokeyword:fragmentation-swipeback:1.3.5'

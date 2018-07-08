@@ -1,5 +1,8 @@
 package com.rid.morgan.inter.app;
 
+import com.joanzapata.iconify.IconFontDescriptor;
+import com.joanzapata.iconify.Iconify;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +18,7 @@ public class Configurator {
 
     public static final HashMap<Object,Object> INTER_CONFIGS = new HashMap<>();
     private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
 
     private Configurator(){
@@ -34,11 +38,17 @@ public class Configurator {
     }
 
     public final void configure(){
+        initIcons();
         INTER_CONFIGS.put(ConfigType.CONFIG_READY,true);
     }
 
     public final Configurator withApiHost(String host){
         INTER_CONFIGS.put(ConfigType.API_HOST,host);
+        return this;
+    }
+
+    public final Configurator withIcon(IconFontDescriptor descriptor) {
+        ICONS.add(descriptor);
         return this;
     }
 
@@ -60,6 +70,16 @@ public class Configurator {
             throw new RuntimeException("Configuration is not ready,call configure");
         }
     }
+
+    private void initIcons() {
+        if (ICONS.size() > 0) {
+            final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
+            for (int i = 1; i < ICONS.size(); i++) {
+                initializer.with(ICONS.get(i));
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key){
         checkConfiguration();

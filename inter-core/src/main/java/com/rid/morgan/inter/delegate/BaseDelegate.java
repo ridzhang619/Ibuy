@@ -35,6 +35,8 @@ public abstract class BaseDelegate extends SwipeBackFragment{
             rootView = inflater.inflate((Integer) setLayout(),container,false);
         }else if(setLayout() instanceof  View){
             rootView = (View) setLayout();
+        }else{
+            throw new RuntimeException("setLayout must be int or view");
         }
         if(rootView != null){
             mUnbinder = ButterKnife.bind(this,rootView);
