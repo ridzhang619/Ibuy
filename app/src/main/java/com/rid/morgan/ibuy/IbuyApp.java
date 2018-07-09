@@ -6,7 +6,7 @@ import android.content.Context;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.rid.morgan.inter.app.Inter;
 import com.rid.morgan.inter.ibuy.database.DatabaseManager;
-import com.rid.morgan.inter.icon.FontIbuyModule;
+import com.rid.morgan.inter.ibuy.icon.FontIbuyModule;
 import com.rid.morgan.inter.net.interceptors.DebugInterceptor;
 
 /**
@@ -21,7 +21,7 @@ public class IbuyApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontIbuyModule())
                 .withApiHost("https://127.0.0.1/")
-                .withInterceptor(new DebugInterceptor("index",R.raw.test))
+//                .withInterceptor(new DebugInterceptor("index",R.raw.test))
                 .configure();
         DatabaseManager.getInstance().init(this);
     }

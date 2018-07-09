@@ -10,6 +10,7 @@ import com.rid.morgan.inter.activities.InterActivity;
 import com.rid.morgan.inter.delegate.InterDelegate;
 import com.rid.morgan.inter.ibuy.launcher.LauncherDelegate;
 import com.rid.morgan.inter.ibuy.launcher.LauncherScrollDelegate;
+import com.rid.morgan.inter.ibuy.main.IbuyBottomDelegate;
 import com.rid.morgan.inter.ibuy.sign.SignUpDelegate;
 
 public class IbuyActivity extends InterActivity {
@@ -27,7 +28,7 @@ public class IbuyActivity extends InterActivity {
     @Override
     public InterDelegate setRootDelegate() {
         Log.d("TAG","IbuyActivity");
-        return new SignUpDelegate();
+        return new IbuyBottomDelegate();
     }
 
 

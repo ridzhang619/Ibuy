@@ -1,5 +1,7 @@
 package com.rid.morgan.inter.app;
 
+import android.os.Handler;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -19,10 +21,12 @@ public class Configurator {
     public static final HashMap<Object,Object> INTER_CONFIGS = new HashMap<>();
     private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final Handler HANDLER = new Handler();
 
 
     private Configurator(){
         INTER_CONFIGS.put(ConfigType.CONFIG_READY,false);//配置开始,还没有完成
+        INTER_CONFIGS.put(ConfigType.HANDLER,HANDLER);
     }
 
     public static Configurator getInstance(){

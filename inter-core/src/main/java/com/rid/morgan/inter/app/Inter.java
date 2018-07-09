@@ -2,6 +2,8 @@ package com.rid.morgan.inter.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
 
 import java.util.HashMap;
 
@@ -26,6 +28,10 @@ public class Inter {
 
     public static <T> T getConfiguration(Object key) {
         return getConfigurator().getConfiguration(key);
+    }
+
+    public static Handler getHandler(){
+        return getConfiguration(ConfigType.HANDLER);
     }
 
     public static Context getApplicationContext(){

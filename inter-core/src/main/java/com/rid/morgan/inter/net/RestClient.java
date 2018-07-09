@@ -1,6 +1,7 @@
 package com.rid.morgan.inter.net;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.rid.morgan.inter.net.callback.IError;
 import com.rid.morgan.inter.net.callback.IFailure;
@@ -88,6 +89,7 @@ public class RestClient {
 
         switch(method){
             case GET:
+                Log.d("TAG",URL);
                 call = service.get(URL,PARAMS);
                 break;
             case POST:

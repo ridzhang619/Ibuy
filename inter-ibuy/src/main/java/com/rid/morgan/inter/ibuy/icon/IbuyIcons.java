@@ -1,4 +1,4 @@
-package com.rid.morgan.inter.icon;
+package com.rid.morgan.inter.ibuy.icon;
 
 
 import com.joanzapata.iconify.Icon;

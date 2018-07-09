@@ -11,7 +11,7 @@ import com.rid.morgan.inter.delegate.InterDelegate;
 /**
  * Create by Morgan on 2018/7/8 0008
  */
-public abstract class BottomItemDelegate extends InterDelegate implements View.OnKeyListener{
+public abstract class BottomItemDelegate extends InterDelegate {
 
     // 再点一次退出程序时间设置
     private static final long WAIT_TIME = 2000L;
