@@ -5,4 +5,10 @@ package com.rid.morgan.inter.delegate;
  */
 public abstract class InterDelegate extends PermissionCheckDelegate{
 
+
+    public <T extends InterDelegate> T getParentDelegate(){
+        return (T) getParentFragment();
+    }
+
+
 }

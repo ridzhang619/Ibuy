@@ -1,5 +1,7 @@
 package com.rid.morgan.inter.ui.recycler;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -19,6 +21,7 @@ public class IndexDataConverter extends DataConverter {
 
         JSONArray jsonArray = JSON.parseObject(getJsonData()).getJSONArray("data");
         int size = jsonArray.size();
+        Log.d("TAG","data size:"+size);
         for (int i = 0; i < size; i++) {
             JSONObject object = jsonArray.getJSONObject(i);
             String imageUrl = object.getString("imageUrl");
@@ -26,7 +29,8 @@ public class IndexDataConverter extends DataConverter {
             int spanSize = object.getInteger("spanSize");
             int id  = object.getInteger("goodsId");
             JSONArray banners = object.getJSONArray("banners");
-            List<String> bannerImages = new ArrayList<>();
+            Log.d("TAG","banners size:"+size);
+            ArrayList<String> bannerImages = new ArrayList<>();
 
             int type = 0;
 
@@ -34,21 +38,22 @@ public class IndexDataConverter extends DataConverter {
                 type = ItemType.TEXT;
             }else if(imageUrl != null && text == null){
                 type = ItemType.IMAGE;
-            }else if(imageUrl != null && text != null){
+            }else if(imageUrl != null){
                 type = ItemType.IMAGE_TEXT;
             }else if(banners != null){
                 type = ItemType.BANNER;
+                int bannerSize = banners.size();
+                for (int j = 0; j < bannerSize; j++) {
+                    String bannerUrl = banners.getString(j);
+                    bannerImages.add(bannerUrl);
+                }
             }
-            int bannerSize = banners.size();
-            for (int j = 0; j < bannerSize; j++) {
-                String bannerUrl = banners.getString(j);
-                bannerImages.add(bannerUrl);
-            }
+
 
             MultipleItemEntity entity = MultipleItemEntity.builder()
                     .setField(MultipleType.ITEM_TYPE,type)
                     .setField(MultipleType.ID,id)
-                    .setField(MultipleType.BANNERS,banners)
+                    .setField(MultipleType.BANNERS,bannerImages)
                     .setField(MultipleType.IMAGE_URL,imageUrl)
                     .setField(MultipleType.SPAN_SIZE,spanSize)
                     .setField(MultipleType.TEXT,text)

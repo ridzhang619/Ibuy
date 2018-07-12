@@ -12,6 +12,7 @@ import com.rid.morgan.inter.R;
 import com.rid.morgan.inter.delegate.InterDelegate;
 
 import me.yokeyword.fragmentation.SupportActivity;
+import qiu.niorgai.StatusBarCompat;
 
 /**
  * Create by Morgan on 2018/6/26 0026
@@ -24,6 +25,7 @@ public abstract class InterActivity extends SupportActivity{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initContainer(savedInstanceState);
+        StatusBarCompat.translucentStatusBar(this,true);
     }
 
 
