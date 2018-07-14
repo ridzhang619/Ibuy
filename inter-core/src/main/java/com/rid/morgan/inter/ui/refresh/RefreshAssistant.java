@@ -22,13 +22,13 @@ public class RefreshAssistant implements SwipeRefreshLayout.OnRefreshListener,
 
     private SwipeRefreshLayout mRefreshLayout;
     private final PageBean BEAN;
-    private final RecyclerView RECYCLWEVIEW;
+    private final RecyclerView RECYCLERVIEW;
     private MultipleRecyclerAdapter mAdapter = null;
     private final DataConverter CONVERTER;
 
     public RefreshAssistant(SwipeRefreshLayout mRefreshLayout, RecyclerView recyclerView, DataConverter converter, PageBean bean) {
         this.mRefreshLayout = mRefreshLayout;
-        this.RECYCLWEVIEW = recyclerView;
+        this.RECYCLERVIEW = recyclerView;
         this.CONVERTER = converter;
         this.BEAN = bean;
         mRefreshLayout.setOnRefreshListener(this);
@@ -59,8 +59,8 @@ public class RefreshAssistant implements SwipeRefreshLayout.OnRefreshListener,
                         BEAN.setTotal(object.getInteger("total"))
                                 .setPageSize(object.getInteger("page_size"));
                         mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
-                        mAdapter.setOnLoadMoreListener(RefreshAssistant.this,RECYCLWEVIEW);
-                        RECYCLWEVIEW.setAdapter(mAdapter);
+                        mAdapter.setOnLoadMoreListener(RefreshAssistant.this,RECYCLERVIEW);
+                        RECYCLERVIEW.setAdapter(mAdapter);
                         BEAN.addIndex();
                     }
                 })

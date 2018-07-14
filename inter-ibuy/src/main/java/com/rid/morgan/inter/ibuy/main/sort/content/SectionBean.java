@@ -18,7 +18,7 @@ public class SectionBean extends SectionEntity<SectionContentItemEntity>{
         super(isHeader, header);
     }
 
-    public boolean isIsMore() {
+    public boolean isMore() {
         return mIsMore;
     }
 

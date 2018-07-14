@@ -5,31 +5,31 @@ package com.rid.morgan.inter.ibuy.main.sort.content;
  */
 public class SectionContentItemEntity {
 
-    private int mGoodId = 0;
-    private String mGoodName = null;
-    private String mGoodThumb = null;
+    private int mGoodsId = 0;
+    private String mGoodsName = null;
+    private String mGoodsThumb = null;
 
-    public int getGoodId() {
-        return mGoodId;
+    public int getGoodsId() {
+        return mGoodsId;
     }
 
-    public void setGoodId(int mGoodId) {
-        this.mGoodId = mGoodId;
+    public void setGoodsId(int mGoodsId) {
+        this.mGoodsId = mGoodsId;
     }
 
-    public String getGoodName() {
-        return mGoodName;
+    public String getGoodsName() {
+        return mGoodsName;
     }
 
-    public void setGoodName(String mGoodName) {
-        this.mGoodName = mGoodName;
+    public void setGoodsName(String mGoodsName) {
+        this.mGoodsName = mGoodsName;
     }
 
-    public String getGoodThumb() {
-        return mGoodThumb;
+    public String getGoodsThumb() {
+        return mGoodsThumb;
     }
 
-    public void setGoodThumb(String mGoodThumb) {
-        this.mGoodThumb = mGoodThumb;
+    public void setGoodsThumb(String mGoodsThumb) {
+        this.mGoodsThumb = mGoodsThumb;
     }
 }

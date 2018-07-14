@@ -30,14 +30,14 @@ public class SectionDataConverter {
             JSONArray goods = data.getJSONArray("goods");
             int goodsSize = goods.size();
             for (int j = 0; j < goodsSize; j++) {
-                JSONObject contentItem = goods.getJSONObject(i);
+                JSONObject contentItem = goods.getJSONObject(j);
                 int goodsId = contentItem.getInteger("goods_id");
                 String goodsName = contentItem.getString("goods_name");
                 String goodsThumb = contentItem.getString("goods_thumb");
                 SectionContentItemEntity entity = new SectionContentItemEntity();
-                entity.setGoodId(goodsId);
-                entity.setGoodName(goodsName);
-                entity.setGoodThumb(goodsThumb);
+                entity.setGoodsId(goodsId);
+                entity.setGoodsName(goodsName);
+                entity.setGoodsThumb(goodsThumb);
                 dataList.add(new SectionBean(entity));
             }
         }
